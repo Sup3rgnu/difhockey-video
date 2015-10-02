@@ -1,0 +1,12 @@
+{
+  "name"         : "difhockey",
+  "version"      : "0.0.1",
+  "description"  : "Scrape difhockey for video.",
+  "main"         : "server.js",
+  "author"       : "Sup3rgnu",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+    "cheerio"    : "latest"
+  }
+}
