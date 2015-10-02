@@ -2,47 +2,49 @@
     "videos": [
         {
             "title": "DIFTV: Nyman \"En skön bortaseger\"",
-            "url": "/artikel/5959/"
+            "url": "http://difhockey.se/artikel/5959/"
         },
         {
             "title": "DIFTV: Presskonferens efter Rögle-DIF",
-            "url": "/artikel/5956/"
+            "url": "http://difhockey.se/artikel/5956/"
         },
         {
             "title": "DIFTV: \"Tuff förlust idag\"",
-            "url": "/artikel/5943/"
+            "url": "http://difhockey.se/artikel/5943/"
         },
         {
             "title": "DIFTV: \"Oerhört frustrerande\"",
-            "url": "/artikel/5942/"
-        },
-        {
-            "title": "DIFTV / Presskonferens: Djurgården-Brynäs",
-            "url": "/artikel/5932/"
+            "url": "http://difhockey.se/artikel/5942/"
         },
         {
             "title": "DIFTV: Matchanalys av Markus Ljungh",
-            "url": "/artikel/5931/"
+            "url": "http://difhockey.se/artikel/5931/"
         },
         {
             "title": "DIFTV: Säcken: \"Vi jobbar hårt på träningarna\"",
-            "url": "/artikel/5922/"
+            "url": "http://difhockey.se/artikel/5922/"
         },
         {
             "title": "DIFTV: Forsberg firade CHL-debuten med mål",
-            "url": "/artikel/5919/"
+            "url": "http://difhockey.se/artikel/5919/"
         },
         {
             "title": "DIFTV: Glimtoft debuterade i CHL",
-            "url": "/artikel/5918/"
+            "url": "http://difhockey.se/artikel/5918/"
         },
         {
             "title": "DIFTV: Mantas Armalis visade upp ett brett register",
-            "url": "/artikel/5917/"
+            "url": "http://difhockey.se/artikel/5917/"
         },
         {
             "title": "DIFTV: Reportage från damernas hemmapremiär",
-            "url": "/artikel/5911/"
+            "url": "http://difhockey.se/artikel/5911/"
+        }
+    ],
+    "highlights": [
+        {
+            "title": "TV: Highlights Rögle - DIF",
+            "url": "http://difhockey.se/artikel/5957/"
         }
     ]
 }

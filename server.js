@@ -13,7 +13,10 @@ app.get('/scrape', function(req, res){
 			var $ = cheerio.load(html);
 
 			var title, url;
-			var json = { videos : [] };
+			var json = { 
+				videos : [], 
+				highlights : [] 
+			};
 
 			$('table.esNewsArchive').filter(function(){
 
@@ -24,13 +27,21 @@ app.get('/scrape', function(req, res){
 		        	var link = $(item).find($('.esNewsArchiveHeader a'));
 		        	title = link.text();
 
-		        	if (title.indexOf("DIFTV") > -1) {
+		        	if (title.indexOf("TV:") > -1) {
 			        	url = link.attr('href');
 
-			        	json.videos.push({
-			        		"title" : title,
-	        				"url" : url
-			        	});
+			        	if (title.indexOf("Highlights") > -1) {
+				        	json.highlights.push({
+			        			"title" : title,
+	        					"url" : "http://difhockey.se" + url
+			        		});
+			        	} else {
+				        	json.videos.push({
+			        			"title" : title,
+	        					"url" : "http://difhockey.se" + url
+			        		});
+			        	}
+
 		        	}
 				});
 
