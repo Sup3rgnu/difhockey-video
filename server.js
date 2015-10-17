@@ -15,7 +15,7 @@ app.get('/shl', function (req, res){
 			images : []
 		};
 
-		var id, token;
+		var id, token, title;
 
 		var $ = cheerio.load(html);
 
@@ -23,15 +23,24 @@ app.get('/shl', function (req, res){
 
 			$(items).each(function (i, item){
 				var image = $(item).find('.thumbImage').attr('src');
+				var desc = $(item).find('.videodesc');
+				title = $(desc[1]).text();
+
 				var temp = image.split('/');
 				id = temp[4];
 				token = temp[5];
 				json.images.push({
 					"id" : id,
-					"token" : token
+					"token" : token,
+					"title" : title
 				});
 			});
-			console.log(json);
+		
+			fs.writeFile('output.shl.json', JSON.stringify(json, null, 4), function (err, data){
+				if (err) throw err;
+				console.log('File successfully written! - Check your project directory for the output.json file');
+			})
+
 		res.send('done');
 	})
 });
@@ -72,31 +81,49 @@ app.get('/dif', function (req, res){
 							json.videos.push({
 								"title" : title,
 								"url" : "http://difhockey.se" + url
-						});
-					}
-
+							});
+						}
 					}
 				});
-
-				///console.log(json);
 			})
 		}
 
-		fs.writeFile('output.json', JSON.stringify(json, null, 4), function (err, data){
+		fs.writeFile('output.dif.json', JSON.stringify(json, null, 4), function (err, data){
 			if (err) throw err;
 
 			console.log('File successfully written! - Check your project directory for the output.json file');
-			console.log(data);
 		})
 
 		res.send('Check your console!')
 	})
 });
 
-app.get('/videos', function (req, res){
+app.get('/shlVideos', function (req, res){
+
+	fs.readFile('output.shl.json', 'utf8', function (err, data) {
+		if (err) throw err;
+		var json = JSON.parse(data);
+		var list = json.images;
+
+		var htmlStart = '<html><head><style>div{display:block;float:left;width:24%;}iframe{width:100%;height:200px}h4{height:50px}</style></head><body>';
+		var htmlEnd = '</body></html>';
+		var videoFrames = '';
+		var videoTitles = '';
+
+		for ( var i in list) {
+			videoFrames += '<div><iframe src="http://video.shl.se/9921825.ihtml/player.html?token=' + list[i].token 
+			+ '&amp;autoPlay=0&amp;source=embed&amp;photo%5fid=' + list[i].id + '" ></iframe>'
+			+ '<h4>' + list[i].title + '</h4></div>';
+		}
+
+		res.send(htmlStart + videoFrames + htmlEnd);
+	});
+});
+
+app.get('/difVideos', function (req, res){
 	var videos = [];
 
-	fs.readFile('output.json', 'utf8', function (err, data) {
+	fs.readFile('output.dif.json', 'utf8', function (err, data) {
 		if (err) throw err;
 		var json = JSON.parse(data);
 		var list = json.videos;
@@ -128,15 +155,12 @@ app.get('/videos', function (req, res){
 			var videoTitles = '';
 
 			for ( var i in videos) {
-				videoFrames += '<div><iframe src="' + videos[i].url + '"></iframe><h4>' + videos[i].title + '</h4></div>'
+				videoFrames += '<div><iframe src="' + videos[i].url + '"></iframe><h4>' + videos[i].title + '</h4></div>';
 			}
 
 			res.send(htmlStart + videoFrames + htmlEnd);
 		});
-
-
 	});
-
 });
 
 app.listen('8081')
