@@ -5,11 +5,42 @@ var async 	= require('async');
 var cheerio = require('cheerio');
 var app 	= express();
 
-app.get('/scrape', function(req, res){
+app.get('/shl', function (req, res){
+	url = 'http://play.shl.se/search/%20dif%20highlights';
+
+	request(url, function (error, response, html){
+		if (error) throw error;
+
+		var json = { 
+			images : []
+		};
+
+		var id, token;
+
+		var $ = cheerio.load(html);
+
+			var items = $('.footerVideoListWrapper .footerThumbDiv');
+
+			$(items).each(function (i, item){
+				var image = $(item).find('.thumbImage').attr('src');
+				var temp = image.split('/');
+				id = temp[4];
+				token = temp[5];
+				json.images.push({
+					"id" : id,
+					"token" : token
+				});
+			});
+			console.log(json);
+		res.send('done');
+	})
+});
+
+app.get('/dif', function (req, res){
 
 	url = 'http://www.difhockey.se/artiklar/0/';
 
-	request(url, function(error, response, html){
+	request(url, function (error, response, html){
 		if(!error){
 			var $ = cheerio.load(html);
 
@@ -60,9 +91,9 @@ app.get('/scrape', function(req, res){
 
 		res.send('Check your console!')
 	})
-})
+});
 
-app.get('/videos', function(req, res){
+app.get('/videos', function (req, res){
 	var videos = [];
 
 	fs.readFile('output.json', 'utf8', function (err, data) {
@@ -106,7 +137,7 @@ app.get('/videos', function(req, res){
 
 	});
 
-})
+});
 
 app.listen('8081')
 console.log('Magic happens on port 8081');
