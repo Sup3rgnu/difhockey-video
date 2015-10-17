@@ -11,3 +11,11 @@ Scrapes videos from DIF hockey
 
 /scraper/highlights
 /scraper/diftv
+
+
+
+## Issues ##
+
+Problems running mongo on heroku: 
+
+$ npm install node-gyp -g && npm cache clean && rm -rf node_modules && npm install
