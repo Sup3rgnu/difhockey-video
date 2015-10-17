@@ -1,2 +1,4 @@
 node_modules/
 output.json
+data
+.DS_Store
