@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1.
+        HIGHLIGHTS
+
+    each video, i in videos
+        div
+            iframe(src="http://video.shl.se/9921825.ihtml/player.html?token=#{video.token}&autoPlay=0&source=embed&photo%5fid=#{video.id}")
+            h4 #{video.title}

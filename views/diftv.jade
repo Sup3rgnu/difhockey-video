@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1.
+        DIFTV
+
+    each video, i in videos
+        div
+            iframe(src="#{video.url}")
+            h4 #{video.title} 
