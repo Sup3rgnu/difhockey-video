@@ -163,6 +163,6 @@ app.get('/difVideos', function (req, res){
 	});
 });
 
-app.listen('8081')
-console.log('Magic happens on port 8081');
+app.listen(process.env.PORT || 5000)
+console.log('Magic happens on port 5000');
 exports = module.exports = app;
