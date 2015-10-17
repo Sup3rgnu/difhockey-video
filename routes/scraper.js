@@ -11,6 +11,7 @@ router.get('/diftv', function(req, res) {
     var db = req.db;
     var collection = db.get('diftv');
 
+
     res.redirect("/diftv");
 });
 
