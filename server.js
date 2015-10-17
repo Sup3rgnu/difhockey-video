@@ -5,7 +5,7 @@ var async 	= require('async');
 var cheerio = require('cheerio');
 var app 	= express();
 
-app.get('/shl', function (req, res){
+app.get('/scrape/shl', function (req, res){
 	url = 'http://play.shl.se/search/%20dif%20highlights';
 
 	request(url, function (error, response, html){
@@ -45,7 +45,7 @@ app.get('/shl', function (req, res){
 	})
 });
 
-app.get('/dif', function (req, res){
+app.get('/scrape/dif', function (req, res){
 
 	url = 'http://www.difhockey.se/artiklar/0/';
 
@@ -98,7 +98,7 @@ app.get('/dif', function (req, res){
 	})
 });
 
-app.get('/shlVideos', function (req, res){
+app.get('/highlights', function (req, res){
 
 	fs.readFile('output.shl.json', 'utf8', function (err, data) {
 		if (err) throw err;
@@ -120,7 +120,7 @@ app.get('/shlVideos', function (req, res){
 	});
 });
 
-app.get('/difVideos', function (req, res){
+app.get('/diftv', function (req, res){
 	var videos = [];
 
 	fs.readFile('output.dif.json', 'utf8', function (err, data) {
