@@ -1,11 +1,13 @@
 Scrapes videos from DIF hockey
 
 1. npm install
-2. node server.js
-3. http://localhost:5000/
+2. mongod --dbpath /data
+3. npm start
+4. http://localhost:3000/
 
 ## Routes ##
-/scrape/shl
-/scrape/dif
 /highlights
 /diftv
+
+/scraper/highlights
+/scraper/diftv
