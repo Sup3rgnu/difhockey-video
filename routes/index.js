@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 router.get('/highlights', function(req, res) {
     var db = req.db;
     var collection = db.get('highlights');
-    collection.find({},{},function(e,docs){
+    collection.find({},{ limit : 8 },function(e,docs){
         res.render('highlights', {
             "videos" : docs
         });
@@ -18,7 +18,7 @@ router.get('/highlights', function(req, res) {
 router.get('/diftv', function(req, res) {
     var db = req.db;
     var collection = db.get('diftv');
-    collection.find({},{},function(e,docs){
+    collection.find({},{ limit : 8 },function(e,docs){
         res.render('diftv', {
             "videos" : docs
         });
