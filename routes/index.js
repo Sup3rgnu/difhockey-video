@@ -10,7 +10,8 @@ router.get('/highlights', function(req, res) {
     var collection = db.get('highlights');
     collection.find({},{ limit : 8 },function(e,docs){
         res.render('highlights', {
-            "videos" : docs
+            title : 'Highlights',
+            videos : docs
         });
     });
 });
@@ -20,7 +21,8 @@ router.get('/diftv', function(req, res) {
     var collection = db.get('diftv');
     collection.find({},{ limit : 8 },function(e,docs){
         res.render('diftv', {
-            "videos" : docs
+            title : 'DIFTV',
+            videos : docs
         });
     });
 });
