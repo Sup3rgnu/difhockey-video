@@ -16,6 +16,7 @@
     "mongodb": "~2.0.33",
     "monk": "~1.0.1",
     "request"    : "latest",
+    "async"      : "latest",
     "cheerio"    : "latest"
   }
 }
