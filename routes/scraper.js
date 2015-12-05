@@ -30,7 +30,7 @@ router.get('/diftv', function(req, res) {
                 var link = $(item).find($('.esNewsArchiveHeader a'));
                 title = link.text();
 
-                if (title.indexOf("TV:") > -1 && title.indexOf("Highlights" === -1)) {
+                if (title.indexOf("DIFTV") > -1 && title.indexOf("Highlights" === -1)) {
                     url = link.attr('href');
                     list.push({
                         "title" : title,
