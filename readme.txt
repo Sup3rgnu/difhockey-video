@@ -1,15 +1,29 @@
+DIFHockey-video
+========================
+
 Scrapes videos from DIF hockey
 
-## Setup ##
+Setup
+------------
 
-1. npm install
-2. mongod --dbpath /data
-3. npm start
-4. http://localhost:3000/
+### Setup 
+
+```bash
+$ npm install
+``` 
+
+```bash
+$ mongod --dbpath /data
+``` 
+
+```bash
+$ npm start
+``` 
+
+http://localhost:3000/
 
 
-
-## Routes ##
+### Routes
 
 /highlights
 /diftv
@@ -18,9 +32,10 @@ Scrapes videos from DIF hockey
 /scraper/diftv
 
 
-
-## Issues ##
+### Errors 
 
 Problems running mongo on heroku: 
 
+```bash
 $ npm install node-gyp -g && npm cache clean && rm -rf node_modules && npm install
+``` 
